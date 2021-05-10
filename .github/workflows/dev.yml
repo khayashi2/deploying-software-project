@@ -59,6 +59,8 @@ jobs:
         cluster: dev-khayashi2
         wait-for-service-stability: true
         
+        
+        
     - name: Functional Test with pytest
       run: |
         pytest  bdd/step_defs/test_fortnite_api.py
@@ -73,7 +75,7 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-    - name: Update task definition
+    - name: Update production task definition
       id: prod-task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
@@ -81,7 +83,7 @@ jobs:
         container-name: prod-khayashi2
         image: ${{ steps.prod-build-image.outputs.image }}
 
-    - name: Deploy Amazon ECS task definition
+    - name: Deploy Amazon ECS production task definition 
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.prod-task-def.outputs.task-definition }}
