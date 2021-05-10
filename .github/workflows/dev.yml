@@ -17,7 +17,7 @@ jobs:
     - name: Install Dependency
       run: |
         pip install pytest
-        
+        pip install pytest_bdd
     - name: Test with pytest
       run: |
         python -m pytest
