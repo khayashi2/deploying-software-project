@@ -58,4 +58,8 @@ jobs:
         service: dev-khayashi2
         cluster: dev-khayashi2
         wait-for-service-stability: true
+        
+    - name: Functional Test with pytest
+      run: |
+        pytest  bdd/step_defs/test_fortnite_api.py
     
