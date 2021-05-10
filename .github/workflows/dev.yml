@@ -18,9 +18,9 @@ jobs:
       run: |
         pip install pytest
         pip install pytest_bdd
-    - name: Test with pytest
+    - name: Unit Test with pytest
       run: |
-        python -m pytest
+        pytest test_main.py
         
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
