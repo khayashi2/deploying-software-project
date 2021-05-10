@@ -47,6 +47,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: prod-khayashi2
-        cluster: prod-khayashi2
+        service: dev-khayashi2
+        cluster: dev-khayashi2
         wait-for-service-stability: true
